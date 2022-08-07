@@ -1,0 +1,66 @@
+{
+  "env": {
+      "browser": true,
+      "es2021": true,
+      "jest": true
+  },
+  "extends": [
+      "plugin:react/recommended",
+      "plugin:import/typescript",
+      "plugin:import/errors",
+      "plugin:import/warnings",
+      "airbnb"
+  ],
+  "parser":  "@typescript-eslint/parser",
+  // "parser": "babel-eslint",
+  "parserOptions": {
+      "ecmaVersion": 2020
+  },
+  "plugins": [
+      "react",
+      "@typescript-eslint"
+  ],
+  "rules": {
+    "react/jsx-props-no-spreading": "off",
+    "no-use-before-define": "off",
+    "no-plusplus": "off",
+    "click-events-have-key-events": "off",
+    "@typescript-eslint/no-use-before-define": ["error"],
+    "react/jsx-filename-extension": [1, { "extensions": [".js",".tsx"] }],
+    "no-console": "off",
+    "global-require": "off",
+    "no-nonoctal-decimal-escape": "off",
+    "no-unsafe-optional-chaining": "off",
+    "no-param-reassign": ["error", { "props": false }],
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ]
+  },
+  "globals": {    
+    "React": true,
+    "google": true,
+    "mount": true,
+    "mountWithRouter": true,
+    "shallow": true,
+    "shallowWithRouter": true,
+    "context": true,
+    "expect": true,
+    "jsdom": true,
+    "JSX": true
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["src"],
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
+  }
+}

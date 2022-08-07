@@ -1,0 +1,63 @@
+html, body {
+    font-family: "Helvetica";
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+$primary-color: #164887;
+$secondary-color: #174a82;
+$black: #000;
+$white: #fff;
+$transparent: #0000;
+
+.primary_color {
+    color: $primary-color,
+}
+
+button, .pointer {
+    cursor:pointer;
+}
+
+.center {
+    text-align:center;
+}
+
+.fade{
+    animation-name: fade-in;
+    animation-duration: 2s;
+}
+
+.text-caps{
+    text-transform: capitalize;
+}  
+
+@keyframes fade-in{
+    from {opacity: 0;}
+    to {opacity: 100;}
+}
+
+@mixin fontStyle($fontWeight , $fontSize, $margin, $color, $align ) {
+    font-weight: $fontWeight;
+    font-size: $fontSize;
+    color: $color;
+    margin: $margin;
+    text-align: $align;
+}
+
+
+@mixin flexStyle($display , $justifyContent, $alignItems, $direction:'row') {
+    @if $display {
+        display: $display;
+    }
+    @if $justifyContent {
+        justify-content: $justifyContent;
+    }
+    @if $alignItems {
+        align-items: $alignItems;
+    }
+    @if $direction {
+        flex-direction: $direction;
+    }
+}

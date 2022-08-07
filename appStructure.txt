@@ -1,0 +1,32 @@
+● src
++---● index
+|   +--● component
+|   |  |--Absentees+---● absentessListOption.js
+|   |  |               |--absenteesList.js
+|   |  |
+|   |  |--Layout+------● Layout.js
+|   |  |               |--Header.js
+|   |  |
+|   |  |--Navbar+------● index.js
+|   |  |               |--MenuList.js
+|   |  |               |--MenuItem.js
+|   |  |
+|   |  |--PageNoFound.js
+|   |  |
+|   |  ● helpers+-----● helpers.js
+|   |  |
+|   |  ● router+------● AppRouter.js
+|   |  |
+|   |  ● shared+------●
+|   |  |              |--Button.js
+|   |  |              |--ButtonLoader.js
+|   |  |              |--DatePicker.js
+|   |  |              |--Toast.js
+|   |  |
+|   |  ● router+------● AppRouter.js
+    |  |
+|   |  ● utils+-------● API.js
+|   |
+|   |--gitignore
+|
+|---●Public+-------●index.html (cdn path for bootstrap and font awesome icon)

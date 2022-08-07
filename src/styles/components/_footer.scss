@@ -1,0 +1,22 @@
+.footer-content {
+    background: $off-black;
+    padding: 20px 10px;
+    width:100%;
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    text-align: center;
+}
+
+.copyrights {
+    text-align: center;
+    background: #7d7d7d;
+    color: $off-white;
+    padding: $p-10;
+}
+.copyrights >p {
+    margin:0px !important;
+}

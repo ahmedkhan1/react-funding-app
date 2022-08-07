@@ -1,0 +1,19 @@
+.form_footer{
+    text-align: center;
+    span {
+        @include fontStyle(bold, 13px, 5px 0, $primary-color, center);
+    }
+    #forget-password-link{ 
+        border-bottom: 1px solid $primary-color; 
+    }
+    img { 
+        width: 100px; 
+        margin: 10px 0; 
+    }
+
+    .footer-wrapper{
+        a:nth-child(1){
+            margin-right: 10px;
+        }
+    }
+}

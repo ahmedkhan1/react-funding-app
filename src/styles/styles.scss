@@ -1,0 +1,198 @@
+@import './base/base.scss';
+@import './components/slider';
+@import './components/login';
+// @import './base/settings.scss';
+// @import './components/header.scss';
+// @import './components/footer';
+
+
+#root {
+    height: 100%;
+    width: 100%;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+.opacity-point-6{
+    opacity: 0.6;
+}
+
+.react-toast-notifications__container{
+    z-index: 200000 !important;
+}
+
+.react-toast-notifications__toast__content{
+    min-height: 25px !important;
+}
+
+.react-toast-notifications__toast__content{
+    font-size: 16px !important;
+}
+
+.react-toast-notifications__toast{
+    height: 40px;
+}
+
+.flex-center{
+    @include flexStyle(flex, center, center);
+}
+
+
+.not-allowed {
+    background: #c7c7c7;
+    cursor: not-allowed;
+}
+
+.nav-items-not-allowed {
+    pointer-events: none;
+    opacity: 0.3;
+}
+
+/*================ DASHBOARD STYLES =================*/
+// Nav Items
+
+.navbar-header {
+    height: 250px;
+    position: relative;
+    background: #002253;
+    @include flexStyle(flex, null, null, column);
+
+    img:nth-child(1) {
+        margin: 0 auto;
+        width: 120px;
+        height: 80px;
+        z-index: 9;
+        margin-top: 1rem;
+    }
+    img:nth-last-child(1) {
+        position: absolute;
+        bottom: -1px;
+    }
+
+    select {
+        position: relative;
+        z-index: 9;
+        margin: 2rem 2rem 0 1.5rem;
+        background: $transparent;
+        border: none;
+        border-bottom: 1px solid $white;
+        color: $white;
+        padding: 4px 0;
+    }
+
+    h1 {
+        z-index: 1;
+        color: $white;
+        font-size: 25px;
+        margin: 1rem 2rem 10px 1.5rem;
+        font-weight: 500;
+        @include fontStyle(500, 25px, 1rem 2rem 5px 1.5rem , $white, null);
+    }
+
+    span {
+        @include fontStyle(null, 13px, 0 1.5rem 1rem 1.5rem, $white, null);
+        z-index: 1;
+        border-bottom: 1px solid;
+        width: 73px;
+        cursor: pointer;
+    }
+    
+}
+
+// Main Menu
+
+.menu-list {
+    display: flex;
+    >p {
+        color: #000;
+        font-size: 14px;
+        margin: 7px 10px 0 0;
+    }
+    button:nth-child(2) {
+        img {
+            width: 20px;
+        }
+    }
+    button:nth-child(3) {
+        margin: 0 13px;
+    }
+    button {
+        img {
+            width: 25px;
+        }
+    }
+}
+
+// Card
+#widget-top{
+    .card {
+        height: 320px;
+        div {
+            height: 285px;
+        }
+    }
+
+    >div {
+        width: 50% !important;
+    }
+}
+
+#bottom-widget .card {
+    height: auto !important;
+    margin-top: 10px !important;
+}
+
+#bottom-widget {
+    .card > div {
+        height: 210px !important;
+    }
+}
+
+/*================ PROFILE STYLES =================*/
+
+// Tab section 
+.css-1h9z7r5-MuiButtonBase-root-MuiTab-root.Mui-selected {
+  color: #000 !important;
+}
+
+.css-1h9z7r5-MuiButtonBase-root-MuiTab-root {
+    text-transform: capitalize !important;
+}
+
+.css-1ujnqem-MuiTabs-root {
+    min-height: 35px !important;
+    margin-top: 10px !important;
+}
+
+.css-1h9z7r5-MuiButtonBase-root-MuiTab-root{
+    min-height: 12px !important;
+    padding: 0 16px !important;
+    height: 35px !important;
+}
+
+.MuiTabs-flexContainer > button:nth-child(1) {
+    padding: 0 !important;
+}
+
+.css-jedpe8-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
+    padding: 6.5px 14px !important;
+}
+
+.css-1n4twyu-MuiInputBase-input-MuiOutlinedInput-input.Mui-disabled,
+.css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root.Mui-disabled
+{
+    opacity: 1;
+    background: #ebedee;
+}
+/*================ Media queries =================*/
+
+@media (max-width: 1024px) {
+    #widget-top {
+        >div {
+            width: 100% !important;
+        }
+    }
+}

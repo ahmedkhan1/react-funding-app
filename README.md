@@ -1,4 +1,4 @@
-# React Funding App
+# React Typescript Funding App
 
 This project includes a React app which utilizes Nodejs API. It is made using Material UI. The CSS framework for this project is SASS, and Materail UIs CSS in Js. 
 It includes:

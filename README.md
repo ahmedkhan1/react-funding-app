@@ -23,13 +23,7 @@ The architecture for this application is module based.
 |   +--● component (Reusable Components)
 |   |  |--FormFields+---● index.tsx
 |   |  |                |--index.test.tsx
-|   |  |
-|   |  |--Layout+-------● Layout.tsx
-|   |  |                |--Header.tsx
-|   |  |
-|   |  |--PageNoFound.tsx
-|   |  |
-|   |  ● helpers+-----● helpers.tsx
+|   |  |                |-- ....
 |   |  |
 |   |  ● router+------● index.jstsx
 |   |  |              |--index.test.tsx
@@ -55,6 +49,7 @@ The architecture for this application is module based.
 |   |            |-----● NotFound
 |   |            |-----● Portfolio
 |   |            |-----● Profile
+                 |-- ....
 |   |  
 |   |--gitignore
 |

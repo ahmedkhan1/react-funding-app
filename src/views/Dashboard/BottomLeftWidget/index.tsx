@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { makeStyles } from '@mui/styles';
 import Cards from 'components/Widgets/DashboardCards';
 import PrimaryLoader from 'components/PrimaryLoader';
-import Utils from 'utils/constants';
+import Utils from 'utils';
 import { Button } from '@mui/material';
 import WidgetTable from '../WidgetTable';
 
@@ -80,7 +80,7 @@ export default function BottomLeftWidget() {
     console.log(filter);
   };
 
-  const widget1 = 'Latest Transactions';
+  const widgetTitle = 'Latest Transactions';
   const filterList = ['Executed', 'In Progress', 'Scheduled'];
   const tableRow1 = [
     {
@@ -133,7 +133,7 @@ export default function BottomLeftWidget() {
     );
   };
   return (
-    <Cards title={widget1}>
+    <Cards title={widgetTitle}>
       {
         renderTable()
     }

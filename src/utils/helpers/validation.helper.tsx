@@ -72,7 +72,7 @@ export default {
     },
     country: {
       required: true,
-      pattern: /^[^\s-][a-zA-Z ]{2,30}[^\s-]+$/,
+      pattern: /^[^\s-][a-zA-Z ][^\s-]+$/,
     },
     city: {
       required: true,
@@ -172,7 +172,7 @@ export default {
     return message;
   },
   errorMessageType(errorField:any, field:string, charLen: number):string {
-    console.log(errorField?.type);
+    // console.log(errorField?.type);
     let message = '';
     if (errorField?.type === 'required') {
       message = `${this.fieldNames(field)} is required.`;

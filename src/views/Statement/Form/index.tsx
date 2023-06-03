@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { Button } from '@mui/material';
 import FormSelectField from 'components/FormSelectField';
 import DatePickerField from 'components/DatePickerField';
+import Utils from 'utils';
 
 interface State {
     from: any;
@@ -58,6 +59,7 @@ function StatementForm(): JSX.Element {
           formFieldName="type"
           register={register}
           errors={errors}
+          setFieldValue={(event:string) => Utils.commonMethods.setFormValues('type', event, setValues, values)}
         />
       </Grid>
       <Grid item xs={12} sm={3} md={3}>

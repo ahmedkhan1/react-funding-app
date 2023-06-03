@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useToasts } from 'react-toast-notifications';
-import commonMethods from 'utils/common.methods';
+import Utils from 'utils';
 import { getAbsentees } from 'services/Absentees.service';
 import {
   getAbsenteesSuccess,
@@ -57,10 +57,10 @@ export default function useFetchAbsenteesList() {
           confirmedAt: el.confirmedAt,
           rejectedAt: el.rejectedAt,
           admitterNote: (el.admitterNote) ? el.admitterNote : '-',
-          date: `${commonMethods.dateFormater(el.startDate)} - 
-          ${commonMethods.dateFormater(el.endDate)}`,
-          startDate: commonMethods.dateFormater(el.startDate),
-          endDate: commonMethods.dateFormater(el.endDate),
+          date: `${Utils.commonMethods.dateFormater(el.startDate)} - 
+          ${Utils.commonMethods.dateFormater(el.endDate)}`,
+          startDate: Utils.commonMethods.dateFormater(el.startDate),
+          endDate: Utils.commonMethods.dateFormater(el.endDate),
           status: currentStatus,
         });
       });
@@ -77,7 +77,7 @@ export default function useFetchAbsenteesList() {
 
   useEffect(() => {
     if (absencesState?.error) {
-      const msg = commonMethods.generateErrorMessage(absencesState.error);
+      const msg = Utils.commonMethods.generateErrorMessage(absencesState.error);
       addToast(msg, { appearance: 'error' });
       setLoader((state) => !state);
     } else if (absencesState?.absences) {

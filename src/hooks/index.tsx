@@ -1,5 +1,5 @@
-import useTogglePasswordVisibility from "./useTogglePasswordVisibility"
+import useTogglePasswordVisibility from './useTogglePasswordVisibility';
 
 export default {
-    useTogglePasswordVisibility
-}
+  useTogglePasswordVisibility,
+};

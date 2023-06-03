@@ -2,6 +2,9 @@ import { combineReducers } from 'redux';
 import { createBrowserHistory as createHistory } from 'history';
 import { createReduxHistoryContext } from 'redux-first-history';
 import absences from './absenceReducer';
+import profile from './profileReducer';
+import customer from './customerReducer';
+import customerId from './customerIdReducer';
 import exportList from './exportReducer';
 
 const { routerReducer } = createReduxHistoryContext({
@@ -11,6 +14,9 @@ const { routerReducer } = createReduxHistoryContext({
 const rootReducer = combineReducers({
   router: routerReducer,
   absences,
+  profile,
+  customerId,
+  customer,
   exportList,
 });
 

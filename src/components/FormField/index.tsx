@@ -1,5 +1,5 @@
-import { FormControl, OutlinedInput } from '@mui/material';
-import Utils from 'utils/helpers/validation.helper';
+import { FormControl, InputAdornment, OutlinedInput } from '@mui/material';
+import Utils from 'utils';
 import Message from 'components/Message';
 
 function FormField(
@@ -11,21 +11,29 @@ function FormField(
     errors,
     isDisabled,
     placeHolder,
+    setFieldValue,
+    icon,
   } :
   {
     values:any,
-    label:string,
+    label?:string,
     formFieldName:any,
     register:any,
     errors: any,
     isDisabled: boolean,
     placeHolder: string,
+    setFieldValue: any,
+    icon?: string,
   },
 ) {
   const handleChange = (form?:string) => (event: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(form, event);
+    console.log(form, event.target.value);
+    setFieldValue(event.target.value);
   };
-  function showErrorMessage() {
+
+  const fieldIcon = (icon) ? <InputAdornment position="start">{Utils.commonMethods.getFieldIcon(icon)}</InputAdornment> : false;
+
+  const showErrorMessage = () => {
     const message = Utils.errorMessageType(errors[formFieldName], formFieldName, 20);
     if (message) {
       return (
@@ -38,7 +46,7 @@ function FormField(
       );
     }
     return '';
-  }
+  };
   return (
     <div>
       {
@@ -50,22 +58,30 @@ function FormField(
         </span>
         )
       }
-      <FormControl sx={{ m: '8px 0px', width: '100%' }} variant="outlined">
-        <OutlinedInput
-          type="text"
-          value={values[formFieldName]}
-          {...register(formFieldName, Utils.getValidations(formFieldName))}
-          size="small"
-          disabled={isDisabled}
-          placeholder={(placeHolder) || ''}
-          onChange={handleChange(formFieldName)}
-          inputProps={{ style: { fontSize: 13 } }}
-          aria-describedby="outlined-weight-helper-text"
-        />
-      </FormControl>
+      <fieldset className={isDisabled ? 'input-field-set' : ''} disabled={isDisabled}>
+        <FormControl sx={{ m: '8px 0px', width: '100%' }} variant="outlined">
+          <OutlinedInput
+            type="text"
+            value={values}
+            {...register(formFieldName, Utils.getValidations(formFieldName))}
+            size="small"
+            placeholder={(placeHolder) || ''}
+            onChange={handleChange(formFieldName)}
+            inputProps={{ style: { fontSize: 13 } }}
+            aria-describedby="outlined-weight-helper-text"
+            startAdornment={fieldIcon}
+          />
+        </FormControl>
+      </fieldset>
+
       {errors && showErrorMessage()}
     </div>
   );
 }
+
+FormField.defaultProps = {
+  icon: '',
+  label: '',
+};
 
 export default FormField;

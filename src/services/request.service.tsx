@@ -12,18 +12,20 @@ const request = ({
   failureAction,
   opts = {},
 }: ApiParams) => (dispatch:any) => {
+  const auth:any = {
+    'Content-Type': 'application/json',
+  };
+  if (localStorage.getItem('authToken')) auth.Authorization = localStorage.getItem('authTestToken');
   axios({
     url: `${process.env.REACT_APP_API_URL}/${path}`,
     ...opts,
-    headers: {
-      'Content-Type': 'application/json',
-    },
+    headers: auth,
   })
     .then((res) => {
-      dispatch(successAction(res.data.Data));
+      dispatch(successAction(res.data.result));
     })
     .catch((error) => {
-      dispatch(failureAction(error?.response?.data?.error ?? error));
+      dispatch(failureAction(error?.message));
     });
 };
 

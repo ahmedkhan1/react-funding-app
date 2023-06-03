@@ -2,7 +2,7 @@ import {
   Chart as ChartJS, ArcElement, Tooltip, Legend,
 } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
-import Utils from 'utils/constants';
+import Utils from 'utils';
 import { makeStyles } from '@mui/styles';
 import { useState } from 'react';
 import PrimaryLoader from 'components/PrimaryLoader';

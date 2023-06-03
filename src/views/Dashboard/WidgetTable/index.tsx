@@ -1,5 +1,5 @@
 import { makeStyles } from '@mui/styles';
-import commonMethods from 'utils/common.methods';
+import Utils from 'utils';
 
 const useStyles = makeStyles(() => ({
   widgetTable: {
@@ -43,7 +43,7 @@ function WidgetTable({ headingList, rowList, isButton }:
           colSpan={5}
           className={classes.lastRow}
         >
-          {(!isButton) ? 'Total Amount: 2,802,2578' : <a href="/dashboard/trasactions">View All e-transactions</a>}
+          {(!isButton) ? 'Total Amount: 2,802,2578' : <a href="/dashboard/transactions">View All e-transactions</a>}
         </td>
       </tr>
     </tbody>
@@ -58,7 +58,7 @@ function WidgetTable({ headingList, rowList, isButton }:
       <tbody>
         {rowList && rowList.map((res) => (
           <tr key={res.id}>
-            {commonMethods.loopTableRowObject(res).map((el:any) => (
+            {Utils.commonMethods.loopTableRowObject(res).map((el:any) => (
               <td key={el}>{el}</td>
             ))}
           </tr>

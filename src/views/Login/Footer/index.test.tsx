@@ -3,8 +3,8 @@ import Footer from './index';
 import 'setupTest';
 
 describe('Footer Component:', () => {
-  const Component = (props:number) => {
-    return <Footer form={props} loadForgetPassword={()=>{}} toLogin={()=>{}} />;
+  function Component(props:number) {
+    return <Footer form={props} loadForgetPassword={() => {}} toLogin={() => {}} />;
   }
   it('Renders without crashing', () => {
     shallow(Component(0));
@@ -28,9 +28,8 @@ describe('Footer Component:', () => {
     expect(wrapper.find('#forget-password-link').length).toEqual(1);
   });
 
-//   it("Should render with an error on props missing", () => {
-//     const props = {form:'', loadForgetPassword:null, toLogin:null};
-//     expect(shallow(<Footer {...props} />)).not.toBeNull();
-//   });
-
+  //   it("Should render with an error on props missing", () => {
+  //     const props = {form:'', loadForgetPassword:null, toLogin:null};
+  //     expect(shallow(<Footer {...props} />)).not.toBeNull();
+  //   });
 });

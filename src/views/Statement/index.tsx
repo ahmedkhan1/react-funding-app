@@ -17,6 +17,13 @@ const useStyles = makeStyles(() => ({
     marginBottom: '1.2rem',
     background: '#00000024',
     height: '490px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    '& > p': {
+      margin: '0 auto',
+      height: 'fit-content',
+    },
   },
   pageTitle: {
     margin: '20px 0 0 10px',
@@ -48,7 +55,7 @@ function Statement(): JSX.Element {
 
         {/* ========== PDF VIEW SECTION ========== */}
         <section className={classes.pdfSection}>
-          <p>PDF</p>
+          <p>No record found</p>
         </section>
       </Cards>
     </div>

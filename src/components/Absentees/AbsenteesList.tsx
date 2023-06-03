@@ -9,7 +9,7 @@ import Paper from '@mui/material/Paper';
 import TablePagination from '@mui/material/TablePagination';
 import { TAbsences } from 'types/TAbsences';
 import Loader from 'shared/Loader';
-import commonMethods from 'utils/common.methods';
+import Utils from 'utils';
 import AbsenteesListOption from './AbsenteesListOption';
 // import Cards from '../Widgets/DashboardCards';
 import useFetchAbsenteesList from '../../hooks/tableOptions';
@@ -95,7 +95,7 @@ export default function EnhancedTable() {
       setLoader(!loader);
       let list = [];
       if ((startDate && endDate)) {
-        list = rowList.filter((el: TAbsences) => commonMethods.dateRange({
+        list = rowList.filter((el: TAbsences) => Utils.commonMethods.dateRange({
           from: el.startDate,
           to: el.endDate,
           selectedFrom: startDate,

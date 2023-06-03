@@ -1,8 +1,8 @@
 @import './base/base.scss';
 @import './components/slider';
 @import './components/login';
+@import './components/_header.scss';
 // @import './base/settings.scss';
-// @import './components/header.scss';
 // @import './components/footer';
 
 
@@ -51,6 +51,19 @@ a {
     opacity: 0.3;
 }
 
+
+/*================ Fields STYLES =================*/
+fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+.input-field-set .MuiOutlinedInput-root {
+    background-color: #00000012;
+    pointer-events: none;
+}
+
 /*================ DASHBOARD STYLES =================*/
 // Nav Items
 
@@ -62,7 +75,7 @@ a {
 
     img:nth-child(1) {
         margin: 0 auto;
-        width: 120px;
+        width: 90px;
         height: 80px;
         z-index: 9;
         margin-top: 1rem;
@@ -81,6 +94,9 @@ a {
         border-bottom: 1px solid $white;
         color: $white;
         padding: 4px 0;
+        option {
+          color: #000;
+        }
     }
 
     h1 {

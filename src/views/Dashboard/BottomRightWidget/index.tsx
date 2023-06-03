@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { makeStyles } from '@mui/styles';
 import Cards from 'components/Widgets/DashboardCards';
 import PrimaryLoader from 'components/PrimaryLoader';
-import Utils from 'utils/constants';
+import Utils from 'utils';
 import WidgetTable from '../WidgetTable';
 
 const useStyles = makeStyles(() => ({

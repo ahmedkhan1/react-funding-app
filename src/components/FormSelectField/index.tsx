@@ -1,5 +1,7 @@
-import { FormControl, MenuItem, Select } from '@mui/material';
-import Utils from 'utils/helpers/validation.helper';
+import {
+  FormControl, MenuItem, Select, SelectChangeEvent,
+} from '@mui/material';
+import Utils from 'utils';
 import Message from 'components/Message';
 
 const placeholder = 'Select ';
@@ -13,6 +15,7 @@ function FormField(
     menuList,
     isDisabled,
     placeHolder,
+    setFieldValue,
   } :
   {
     values:any,
@@ -23,11 +26,14 @@ function FormField(
     menuList: any[],
     isDisabled: boolean,
     placeHolder: string,
+    setFieldValue:any,
   },
 ) {
-  const handleChange = (form?:string) => (event: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(form, event);
+  const handleChange = (event: SelectChangeEvent) => {
+    console.log(event.target.value);
+    setFieldValue(event.target.value);
   };
+
   function showErrorMessage() {
     const message = Utils.errorMessageType(errors[formFieldName], formFieldName, 20);
     if (message) {
@@ -53,28 +59,30 @@ function FormField(
         </span>
         )
       }
-      <FormControl sx={{ m: '8px 0px', width: '100%' }} variant="outlined" disabled={isDisabled}>
-        <Select
-          value={values[formFieldName]}
-          {...register(formFieldName, Utils.getValidations(formFieldName))}
-          onChange={handleChange}
-          displayEmpty
-          size="small"
-          defaultValue=""
-          inputProps={{ style: { fontSize: 13 } }}
-        >
-          <MenuItem value="" selected sx={{ fontStyle: 'unset !important' }}>
-            <em>
-              {placeholder + placeHolder || ''}
-            </em>
-          </MenuItem>
-          {
-            menuList.map((res:any) => (
-              <MenuItem value={res} key={res}>{res}</MenuItem>
-            ))
-          }
-        </Select>
-      </FormControl>
+      <fieldset className={isDisabled ? 'input-field-set' : ''} disabled={isDisabled}>
+        <FormControl sx={{ m: '8px 0px', width: '100%' }} variant="outlined">
+          <Select
+            value={values}
+            {...register(formFieldName, Utils.getValidations(formFieldName))}
+            onChange={handleChange}
+            displayEmpty
+            size="small"
+            defaultValue=""
+            inputProps={{ style: { fontSize: 13 } }}
+          >
+            <MenuItem value="" selected sx={{ fontStyle: 'unset !important' }}>
+              <em>
+                {placeholder + placeHolder || ''}
+              </em>
+            </MenuItem>
+            {
+              menuList.map((res:any) => (
+                <MenuItem value={res} key={res}>{res}</MenuItem>
+              ))
+            }
+          </Select>
+        </FormControl>
+      </fieldset>
       {errors && showErrorMessage()}
     </div>
   );

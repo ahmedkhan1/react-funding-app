@@ -4,6 +4,8 @@ import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import TabPanel from 'components/TabPanel';
 import { makeStyles } from '@mui/styles';
+import { purgeUserProfileState } from 'redux/actions/users';
+import { useDispatch } from 'react-redux';
 import InformationTab from './InformationTab';
 
 function a11yProps(index: number) {
@@ -31,13 +33,18 @@ const useStyles = makeStyles(() => ({
 function Profile(): JSX.Element {
   const [value, setValue] = useState(0);
   const classes = useStyles();
+  const dispatch = useDispatch();
 
   const handleChange = (event: SyntheticEvent, newValue: number) => {
+    dispatch(purgeUserProfileState());
     setValue(newValue);
   };
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    return () => {
+      dispatch(purgeUserProfileState());
+    };
   }, []);
 
   return (

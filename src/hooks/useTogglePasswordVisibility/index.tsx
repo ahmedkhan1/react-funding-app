@@ -3,7 +3,7 @@ import fileDownload from 'js-file-download';
 import { useToasts } from 'react-toast-notifications';
 import { useDispatch, useSelector } from 'react-redux';
 import { exportAbsenteesICO } from 'services/Absentees.service';
-import commonMethods from 'utils/common.methods';
+import Utils from 'utils';
 import {
   exportAbsenteesSuccess,
   exportAbsenteesFailure,
@@ -23,7 +23,7 @@ const useTogglePasswordVisibility = () => {
 
   useEffect(() => {
     if (exportListState?.error) {
-      const msg = commonMethods.generateErrorMessage(exportListState.error);
+      const msg = Utils.commonMethods.generateErrorMessage(exportListState.error);
       addToast(msg, { appearance: 'error' });
     } else if (exportListState.exportList) {
       const fileName = `file${Math.random()}s`;

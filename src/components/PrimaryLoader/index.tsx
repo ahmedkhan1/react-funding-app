@@ -1,5 +1,5 @@
 import Box from '@mui/material/Box';
-import Utils from 'utils/constants';
+import Utils from 'utils';
 
 export default function PrimaryLoader() {
   return (

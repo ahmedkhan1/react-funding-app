@@ -13,5 +13,4 @@ describe('Carousel Component:', () => {
     const wrapper = shallow(<Carousel />);
     expect(wrapper.find('.slider').length).toEqual(3);
   });
-
 });

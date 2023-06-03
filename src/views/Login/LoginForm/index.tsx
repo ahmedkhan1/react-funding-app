@@ -1,10 +1,8 @@
-import formvalidation from 'utils/helpers/validation.helper';
-import CommonMethods from 'utils/common.methods';
+import Utils from 'utils';
 // import CONSTANTS from 'utils/constants';
 import { useNavigate } from 'react-router-dom';
 import Message from 'components/Message';
 import {
-  EmailRounded,
   Lock,
   Visibility,
   VisibilityOff,
@@ -17,8 +15,9 @@ import OutlinedInput from '@mui/material/OutlinedInput';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import Loader from 'components/Loader';
+import FormField from 'components/FormField';
 
-const { keysExist } = CommonMethods;
+const { keysExist } = Utils.commonMethods;
 
 interface State {
   email: string;
@@ -55,15 +54,16 @@ function LoginForm(): JSX.Element {
   };
 
   const validationMessage = () => (
-    <div>
+    <div id="message-container">
       <Message
         type="error"
-        message={values.message || formvalidation.errorMessage(errors, 'login')}
+        message={values.message || Utils.errorMessage(errors, 'login')}
         maxWidth="308px"
         show
       />
     </div>
   );
+
   const onSubmit = (data:any) => {
     setValues({ ...values, loader: true });
     console.log(data);
@@ -76,24 +76,23 @@ function LoginForm(): JSX.Element {
       {/* Form Message */}
       {(keysExist(errors) || values.message) && validationMessage()}
 
-      <FormControl sx={{ m: '8px 0px', width: '100%' }} variant="outlined">
-        <OutlinedInput
-          value={values.email}
-          {...register('email', formvalidation.validation.email)}
-          size="small"
-          placeholder="Email"
-          onChange={handleChange('email')}
-          inputProps={{ style: { fontSize: 13 } }}
-          aria-describedby="outlined-weight-helper-text"
-          startAdornment={<InputAdornment position="start"><EmailRounded className="opacity-point-6" /></InputAdornment>}
-        />
-      </FormControl>
+      {/* ========= EMAIL FIELD ========= */}
+      <FormField
+        errors
+        isDisabled={false}
+        values={values.email}
+        placeHolder="Email"
+        formFieldName="email"
+        register={register}
+        icon="email"
+        setFieldValue={(event:string) => Utils.commonMethods.setFormValues('email', event, setValues, values)}
+      />
 
       <FormControl sx={{ m: '8px 0px', width: '100%' }} variant="outlined">
         <OutlinedInput
           type={values.showPassword ? 'text' : 'password'}
           value={values.password}
-          {...register('password', formvalidation.validation.Password)}
+          {...register('password', Utils.validation.Password)}
           size="small"
           placeholder="Password"
           onChange={handleChange('password')}
@@ -118,6 +117,7 @@ function LoginForm(): JSX.Element {
         (values.loader) ? <Loader />
           : (
             <Button
+              id="login-btn"
               fullWidth
               sx={{ margin: '8px 0px' }}
               onClick={handleSubmit(onSubmit)}

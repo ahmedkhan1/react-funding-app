@@ -1,6 +1,6 @@
 import { TextField } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import Utils from 'utils/helpers/validation.helper';
+import Utils from 'utils';
 import Message from 'components/Message';
 
 const useStyles = makeStyles(() => ({

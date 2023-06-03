@@ -6,6 +6,9 @@ import FormSelectField from 'components/FormSelectField';
 import { Button } from '@mui/material';
 import { useForm } from 'react-hook-form';
 import FormTextAreaField from 'components/FormTextAreaField';
+import Utils from 'utils';
+import { useSelector } from 'react-redux';
+import { RootState } from 'redux/reducers/rootReducer';
 
 const useStyles = makeStyles(() => ({
   lodgeComplaintContainer: {
@@ -55,6 +58,10 @@ interface State {
 function LodgeComplaint(): JSX.Element {
   const classes = useStyles();
   const { register, handleSubmit, formState: { errors } } = useForm();
+  const customer:any[] = useSelector((state: RootState) => (
+    (state.customer?.payload) ? state.customer?.payload?.map((res:any) => res.customerId) : []
+  ));
+
   const [values, setValues] = useState<State>({
     customerAccount: '',
     type: '',
@@ -85,25 +92,27 @@ function LodgeComplaint(): JSX.Element {
             <Grid item xs={12} sm={5} md={4} style={{ marginRight: '7rem' }}>
               <FormSelectField
                 isDisabled={false}
-                menuList={['Male', 'Female']}
+                menuList={customer}
                 values={values.customerAccount}
                 label="Customer Account"
                 placeHolder="Customer Account"
                 formFieldName="customerAccount"
                 register={register}
                 errors={errors}
+                setFieldValue={(event:string) => Utils.commonMethods.setFormValues('customerAccount', event, setValues, values)}
               />
             </Grid>
             <Grid item xs={12} sm={5} md={4}>
               <FormSelectField
                 isDisabled={false}
-                menuList={['Male', 'Female']}
+                menuList={['Non-Pension', 'Pension']}
                 values={values.type}
                 label="Type"
                 placeHolder="Type"
                 formFieldName="type"
                 register={register}
                 errors={errors}
+                setFieldValue={(event:string) => Utils.commonMethods.setFormValues('type', event, setValues, values)}
               />
             </Grid>
           </Grid>
@@ -111,25 +120,27 @@ function LodgeComplaint(): JSX.Element {
             <Grid item xs={12} sm={5} md={4} style={{ marginRight: '7rem' }}>
               <FormSelectField
                 isDisabled={false}
-                menuList={['Male', 'Female']}
+                menuList={['Old', 'New']}
                 values={values.subType}
                 label="Sub Type"
                 placeHolder="Sub Type"
                 formFieldName="subType"
                 register={register}
                 errors={errors}
+                setFieldValue={(event:string) => Utils.commonMethods.setFormValues('subType', event, setValues, values)}
               />
             </Grid>
             <Grid item xs={12} sm={5} md={4}>
               <FormSelectField
                 isDisabled={false}
-                menuList={['Male', 'Female']}
+                menuList={['Mutual Funds', 'Provident Funds']}
                 values={values.category}
                 label="Category"
                 placeHolder="Category"
                 formFieldName="category"
                 register={register}
                 errors={errors}
+                setFieldValue={(event:string) => Utils.commonMethods.setFormValues('category', event, setValues, values)}
               />
             </Grid>
           </Grid>

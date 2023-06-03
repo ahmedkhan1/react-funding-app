@@ -1,4 +1,4 @@
-import React, { MouseEventHandler } from 'react';
+import React, { MouseEventHandler, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
@@ -7,6 +7,12 @@ import {
   Drawer,
   List,
 } from '@mui/material';
+import { useDispatch, useSelector } from 'react-redux';
+import { getCustomerIdsFailure, getCustomerIdsSuccess, setCustomerIdsSuccess } from 'redux/actions/customers';
+import { getCustomerIds } from 'services/customer.service';
+import { RootState } from 'redux/reducers/rootReducer';
+import { TCustomerIDList } from 'types/TState';
+import Utils from 'utils';
 import dashboardIcon from '../../assets/icons/navigation/dashboard-icon.png';
 import portfolioIcon from '../../assets/icons/navigation/portfolio.png';
 import statemenetIcon from '../../assets/icons/navigation/statements.png';
@@ -14,7 +20,7 @@ import etransactionIcon from '../../assets/icons/navigation/e-transaction.png';
 import lodgesComplainIcon from '../../assets/icons/navigation/lodges-complain.png';
 import logoutIcon from '../../assets/icons/navigation/logout.png';
 import background from '../../assets/images/navbar-background.png';
-import logo from '../../assets/icons/ubl-logo-150.png';
+import logo from '../../assets/images/amc-main-logo-white.png';
 import NavItem from './NavItem';
 
 const items = [
@@ -60,11 +66,39 @@ function DashboardSidebar({
   openMobile,
 } : sideBarProps): JSX.Element {
   const navigate = useNavigate();
-  const [balance] = React.useState<any>(0);
-  const [customerIdList] = React.useState<any>([]);
+  const [balance, setBalance] = React.useState<any>(0);
+  // const [customerIdList] = React.useState<any>([]);
+  const dispatch = useDispatch();
+  const customerIDList:TCustomerIDList = useSelector((state: RootState) => state.customer);
+
+  useEffect(() => {
+    const abortController = new AbortController();
+    if (customerIDList?.error) {
+      console.log('Error:', customerIDList);
+    } else {
+      dispatch(getCustomerIds({
+        successAction: getCustomerIdsSuccess,
+        failureAction: getCustomerIdsFailure,
+      }));
+    }
+    return () => {
+      abortController.abort(); // cancel pending API
+    };
+  }, []);
 
   const moreDetails = () => {
     navigate('/dashboard/profile', { replace: true });
+  };
+
+  const onCustomerIdChange = (event:any) => {
+    const { value } = event.target;
+    const obj:any = customerIDList?.payload?.find(
+      (res:any) => res.customerId === value,
+    );
+    const formatBalance = Utils.commonMethods.formatNumber(obj.balance);
+    setBalance(formatBalance);
+    localStorage.setItem('customerId', value);
+    dispatch(setCustomerIdsSuccess(value));
   };
 
   const content = (
@@ -78,11 +112,11 @@ function DashboardSidebar({
       <div className="navbar-header">
         <img src={logo} alt="logo" />
 
-        <select defaultValue="0">
+        <select defaultValue="0" onChange={(event) => onCustomerIdChange(event)}>
           <option value="0">Customer ID</option>
           {
-            customerIdList.map((res: any) => (
-              <option value={res.key} key={res.key}>{res.value}</option>
+            customerIDList?.payload?.map((res: any) => (
+              <option value={res.customerId} key={res.id}>{res.customerId}</option>
             ))
           }
         </select>

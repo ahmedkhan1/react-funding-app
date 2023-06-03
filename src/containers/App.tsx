@@ -6,7 +6,7 @@ import routes from '../routes';
 import ErrorBoundary from '../components/ErrorBoundary';
 
 function App(): JSX.Element {
-  const Routes = () => { const elements = useRoutes(routes); return elements; };
+  const Routes = () => useRoutes(routes);
   return (
     <ErrorBoundary>
       <ThemeProvider theme={theme}>

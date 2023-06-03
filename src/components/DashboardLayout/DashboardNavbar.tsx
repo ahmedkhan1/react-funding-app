@@ -10,9 +10,26 @@ import MenuList from 'components/Menu';
 import settingIcon from '../../assets/icons/setting.png';
 import notification from '../../assets/icons/notification.png';
 
-const notifcationList = ['1 Message'];
-const settings = ['Profile', 'Reset Password', 'Logout'];
-const profileList = ['Profile', 'Reset Password', 'Logout'];
+const notifcationList = [
+  {
+    name: 'Update your profile',
+  },
+];
+
+const settings = [
+  {
+    name: 'Profile',
+    link: '/dashboard/profile',
+  },
+  {
+    name: 'Reset Password',
+    link: '',
+  },
+  {
+    name: 'Logout',
+    link: '',
+  },
+];
 function DashboardNavbar({
   onMobileNavOpen,
 }:{onMobileNavOpen:any}): JSX.Element {
@@ -34,9 +51,8 @@ function DashboardNavbar({
         {/* ============== MAIN MENU LIST ============== */}
         <Box sx={{ flexGrow: 0 }} className="menu-list">
           <p>07:59:34 PM April 04, 2021 </p>
-          <MenuList list={notifcationList} type="notificaiton" image={notification} />
-          <MenuList list={settings} type="settings" image={settingIcon} />
-          <MenuList list={profileList} type="profile" image="" />
+          <MenuList list={notifcationList} link={false} type="notificaiton" image={notification} />
+          <MenuList list={settings} link type="settings" image={settingIcon} />
         </Box>
 
       </Toolbar>

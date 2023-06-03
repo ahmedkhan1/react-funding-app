@@ -6,11 +6,11 @@ const content = 'Availalbe on the App store';
 
 describe('AppStore Component:', () => {
   it('Renders without crashing', () => {
-    shallow(<AppStore app={'App'} />);
+    shallow(<AppStore app="App" />);
   });
 
   it('Should accept app prop and set text', () => {
-    const wrapper = shallow(<AppStore  app={'App store'} />);
+    const wrapper = shallow(<AppStore app="App store" />);
     expect(wrapper.find('p').text()).toEqual(content);
   });
 
@@ -18,5 +18,4 @@ describe('AppStore Component:', () => {
   //   const props = {};
   //   expect(shallow(<AppStore {...props} />)).not.toBeNull();
   // });
-
 });

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useToasts } from 'react-toast-notifications';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProfile } from 'services/Profile.service';
-import commonMethods from 'utils/common.methods';
+import Utils from 'utils';
 import {
   getUserProfileSuccess,
   getUserProfileFailure,
@@ -39,12 +39,12 @@ const useProfile = (): [State, any, TProfileState, {payload:string}] => {
   const dispatch = useDispatch();
   const profileState:TProfileState = useSelector((state: RootState) => state.profile);
   const customerId:{payload:string} = useSelector((state: RootState) => state.customerId);
-  const [values, setValues] = useState<State>(commonMethods.getProfileState());
+  const [values, setValues] = useState<State>(Utils.commonMethods.getProfileState());
 
   async function getProfileData() {
     if (profileState?.payload) {
       const profileStates:any = profileState.payload;
-      console.log(profileStates);
+
       await setValues({
         ...values,
         ...{
@@ -70,32 +70,40 @@ const useProfile = (): [State, any, TProfileState, {payload:string}] => {
 
   useEffect(() => {
     const abortController = new AbortController();
-    if (profileState?.error) {
-      const msg = commonMethods.generateErrorMessage(profileState.error);
-      addToast(msg, { appearance: 'error' });
-      setValues({ ...values, isLoading: false });
-    } else if (profileState?.updated && profileState?.updated.length && profileState?.updated[0]) {
-      const msg = 'Profile Updated successfully';
-      addToast(msg, { appearance: 'success' });
-      setValues({ ...values, isLoading: false });
-    } else if (!localStorage.getItem('customerId') && profileState?.payload) {
+    if (!localStorage.getItem('customerId') && profileState?.payload) {
       getProfileData();
     } else {
       setValues({ ...values, isLoading: true });
-      // setTimeout(() => {
-      const cId = (customerId?.payload !== undefined) ? customerId?.payload : '1-13465567';
-      localStorage.setItem('customerId', '');
-      dispatch(getProfile({
-        successAction: getUserProfileSuccess,
-        failureAction: getUserProfileFailure,
-        params: { customerId: cId },
-      }));
-      // }, 1000);
+      setTimeout(() => {
+        const cId = (customerId?.payload !== undefined) ? customerId?.payload : '1-13465567';
+        localStorage.setItem('customerId', '');
+        dispatch(getProfile({
+          successAction: getUserProfileSuccess,
+          failureAction: getUserProfileFailure,
+          params: { customerId: cId },
+        }));
+      }, 500);
     }
     return () => {
       abortController.abort(); // cancel pending API
     };
-  }, [profileState, customerId]);
+  }, [profileState?.payload, customerId]);
+
+  useEffect(() => {
+    if (profileState?.updated?.length && profileState?.updated[0]) {
+      const msg = 'Profile Updated successfully';
+      addToast(msg, { appearance: 'success' });
+      setValues({ ...values, isLoading: false });
+    }
+  }, [profileState?.updated]);
+
+  useEffect(() => {
+    if (profileState?.error) {
+      const msg = Utils.commonMethods.generateErrorMessage(profileState.error);
+      addToast(msg, { appearance: 'error' });
+      setValues({ ...values, isLoading: false });
+    }
+  }, [profileState?.error]);
 
   return [
     values,

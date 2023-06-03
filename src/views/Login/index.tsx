@@ -5,7 +5,7 @@ import Carousel from './Carousel';
 import ForgetPassForm from './ForgetPassForm';
 import LoginForm from './LoginForm';
 import RegisterForm from './RegisterForm';
-import logo from '../../assets/images/logo.jpg';
+import logo from '../../assets/images/amc-main-logo.png';
 import Footer from './Footer';
 
 const useStyles = makeStyles(() => ({
@@ -91,7 +91,6 @@ const useStyles = makeStyles(() => ({
 function LoginView() {
   const classes = useStyles();
   const [form, setForm] = useState<number>(0);
-  // const [message] = useState<boolean>(false);
 
   const loadForm = () => {
     switch (form) {
@@ -112,7 +111,7 @@ function LoginView() {
         <div className={classes.formHeader}>
           <h1>
             Welcome to
-            <span className="primary_color"> UBL Funds </span>
+            <span className="primary_color"> AMC Funds </span>
             Online
           </h1>
           <p>Funding with confidence.</p>

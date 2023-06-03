@@ -1,32 +1,36 @@
 ● src
 +---● index
-|   +--● component
-|   |  |--Absentees+---● absentessListOption.js
-|   |  |               |--absenteesList.js
+|   +--● component (Reusable Components)
+|   |  |--FormFields+---● index.tsx
+|   |  |                |--index.test.tsx
+|   |  |                |-- ....
 |   |  |
-|   |  |--Layout+------● Layout.js
-|   |  |               |--Header.js
+|   |  ● router+------● index.jstsx
+|   |  |              |--index.test.tsx
 |   |  |
-|   |  |--Navbar+------● index.js
-|   |  |               |--MenuList.js
-|   |  |               |--MenuItem.js
-|   |  |
-|   |  |--PageNoFound.js
-|   |  |
-|   |  ● helpers+-----● helpers.js
-|   |  |
-|   |  ● router+------● AppRouter.js
-|   |  |
-|   |  ● shared+------●
-|   |  |              |--Button.js
-|   |  |              |--ButtonLoader.js
-|   |  |              |--DatePicker.js
-|   |  |              |--Toast.js
-|   |  |
-|   |  ● router+------● AppRouter.js
+|   |  ● router+------● index.tsx
     |  |
-|   |  ● utils+-------● API.js
-|   |
+|   |  ● utils+-------● common.methods.tsx
+|   |  |              ● constants+---●
+|   |  |              |              |--index.tsx
+|   |  |              |              |--chart.constant.tsx
+|   |  |              |              |--date.constant.tsx
+|   |  |              |              |--image.constant.tsx
+|   |  |              |              |--message.constant.tsx
+|   |  |              |              
+|   |  |              ● helpers+---●
+|   |  |                           |--validation.helper.tsx
+|   |  ● views+---
+|   |            |-----● Dashboard
+|   |            |-----● Etransaction
+|   |            |-----● Feedback
+|   |            |-----● LodgeComplaint
+|   |            |-----● Login
+|   |            |-----● NotFound
+|   |            |-----● Portfolio
+|   |            |-----● Profile
+                 |-- ....
+|   |  
 |   |--gitignore
 |
-|---●Public+-------●index.html (cdn path for bootstrap and font awesome icon)
+|---●Public+-------●index.html

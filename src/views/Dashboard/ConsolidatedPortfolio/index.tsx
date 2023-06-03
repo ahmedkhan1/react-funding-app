@@ -10,7 +10,7 @@ import {
   Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-import Utils from 'utils/constants';
+import Utils from 'utils';
 import PrimaryLoader from 'components/PrimaryLoader';
 import { makeStyles } from '@mui/styles';
 import { useState } from 'react';

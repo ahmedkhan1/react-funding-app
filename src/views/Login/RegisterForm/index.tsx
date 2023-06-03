@@ -1,5 +1,4 @@
-import formvalidation from 'utils/helpers/validation.helper';
-import CommonMethods from 'utils/common.methods';
+import Utils from 'utils';
 import Message from 'components/Message';
 import {
   EmailRounded,
@@ -17,7 +16,7 @@ import OutlinedInput from '@mui/material/OutlinedInput';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
-const { keysExist } = CommonMethods;
+const { keysExist } = Utils.commonMethods;
 
 interface State {
   name: string;
@@ -70,7 +69,7 @@ function RegisterForm(): JSX.Element {
     <div>
       <Message
         type="error"
-        message={formvalidation.errorMessage(errors, 'register')}
+        message={Utils.errorMessage(errors, 'register')}
         maxWidth="308px"
         show
       />
@@ -86,7 +85,7 @@ function RegisterForm(): JSX.Element {
       <FormControl sx={{ m: '8px 0px', width: '100%' }} variant="outlined">
         <OutlinedInput
           value={values.name}
-          {...register('name', formvalidation.validation.name)}
+          {...register('name', Utils.validation.name)}
           size="small"
           placeholder="Name"
           onChange={handleChange('name')}
@@ -100,7 +99,7 @@ function RegisterForm(): JSX.Element {
       <FormControl sx={{ m: '8px 0px', width: '100%' }} variant="outlined">
         <OutlinedInput
           value={values.email}
-          {...register('email', formvalidation.validation.email)}
+          {...register('email', Utils.validation.email)}
           size="small"
           placeholder="Email"
           onChange={handleChange('email')}
@@ -114,7 +113,7 @@ function RegisterForm(): JSX.Element {
       <FormControl sx={{ m: '8px 0px', width: '100%' }} variant="outlined">
         <OutlinedInput
           value={values.phone}
-          {...register('phone', formvalidation.validation.PhoneNumber)}
+          {...register('phone', Utils.validation.PhoneNumber)}
           size="small"
           placeholder="Phone number"
           onChange={handleChange('phone')}
@@ -129,7 +128,7 @@ function RegisterForm(): JSX.Element {
         <OutlinedInput
           type={values.showPassword ? 'text' : 'password'}
           value={values.password}
-          {...register('password', formvalidation.validation.Password)}
+          {...register('password', Utils.validation.Password)}
           size="small"
           placeholder="Password"
           onChange={handleChange('password')}
@@ -155,7 +154,7 @@ function RegisterForm(): JSX.Element {
         <OutlinedInput
           type={values.showConfirmPassword ? 'text' : 'password'}
           value={values.confirmPassword}
-          {...register('confirmPassword', formvalidation.validation.Password)}
+          {...register('confirmPassword', Utils.validation.Password)}
           size="small"
           placeholder="Confirm Password"
           onChange={handleChange('confirmPassword')}

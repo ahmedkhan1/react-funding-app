@@ -9,7 +9,9 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import defaultProfile from '../../assets/icons/profile-hover.png';
 
-function MenuList({ list, type, image }:{ list:any[], type: string, image:string }): JSX.Element {
+function MenuList({
+  list, link, type, image,
+}:{ list:any[], link: boolean, type: string, image:string }): JSX.Element {
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
     null,
   );
@@ -50,8 +52,10 @@ function MenuList({ list, type, image }:{ list:any[], type: string, image:string
         onClose={handleCloseUserMenu}
       >
         {list.map((res) => (
-          <MenuItem key={res} onClick={handleCloseUserMenu}>
-            <Typography textAlign="center">{res}</Typography>
+          <MenuItem className="header-menu-dropdown" key={res.name} onClick={handleCloseUserMenu}>
+            <Typography textAlign="center">
+              { (link) ? <a href={res.link}>{res.name}</a> : res.name }
+            </Typography>
           </MenuItem>
         ))}
       </Menu>

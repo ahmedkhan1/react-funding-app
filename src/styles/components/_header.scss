@@ -1,23 +1,11 @@
-.header{
-    background:$off-black;
-    color:white;
-    margin-bottom: 4.8rem;
-    padding: $m-size 0;
-}
 
-.header__title {
-    font-size: 3.2rem;
-    margin: 0;
-}
-.header__subtitle {
-    color:$off-white;
-    font-size:$m-size;
-    font-weight:500;
-    margin:0;
-    padding:20px;
-}
+.header-menu-dropdown {
+    p {
+        width: 100%;
+        text-align: left;
+        a {
+            display: block !important;
+        }
+    }
 
-.is-active{
-    color:black;
-    font-style: bold;
 }

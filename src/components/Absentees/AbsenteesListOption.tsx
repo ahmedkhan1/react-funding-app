@@ -4,10 +4,10 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import PropTypes from 'prop-types';
-import Button from '../../shared/Button';
+import Button from 'shared/Button';
+import Dropdown from 'shared/Dropdown';
 import DatePicker from '../../shared/DatePicker';
 import useExportAbsentees from '../../hooks/useExportAbsentees';
-import Dropdown from '../../shared/Dropdown';
 
 const useStyles = makeStyles({
   root: {

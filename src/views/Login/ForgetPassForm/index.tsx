@@ -1,8 +1,5 @@
-import formvalidation from 'utils/helpers/validation.helper';
-import CommonMethods from 'utils/common.methods';
-import Utils from 'utils/constants/';
+import Utils from 'utils';
 import Message from 'components/Message';
-// import Loader from 'components/Loader';
 import {
   EmailRounded,
 } from '@mui/icons-material';
@@ -14,7 +11,7 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import Loader from 'components/Loader';
 
-const { keysExist } = CommonMethods;
+const { keysExist } = Utils.commonMethods;
 
 interface State {
   email: string;
@@ -38,7 +35,7 @@ function ForgetPassForm(): JSX.Element {
     <div>
       <Message
         type="error"
-        message={values.message || formvalidation.errorMessage(errors, 'forgetPassword')}
+        message={values.message || Utils.errorMessage(errors, 'forgetPassword')}
         maxWidth="308px"
         show
       />
@@ -60,7 +57,7 @@ function ForgetPassForm(): JSX.Element {
         <OutlinedInput
           value={values.email}
           size="small"
-          {...register('email', formvalidation.validation.email)}
+          {...register('email', Utils.validation.email)}
           placeholder="Email"
           onChange={handleChange('email')}
           inputProps={{ style: { fontSize: 13 } }}

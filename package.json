@@ -7,7 +7,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint --fix src/**/*.tsx"
+    "lint": "eslint --fix src/**/*.tsx",
+    "lints": "eslint --fix"
   },
   "dependencies": {
     "@date-io/moment": "^2.14.0",
@@ -23,6 +24,7 @@
     "@wojtekmaj/enzyme-adapter-react-17": "0.6.6",
     "axios": "0.26.0",
     "chart.js": "^3.8.2",
+    "cross-env": "^7.0.3",
     "enzyme": "3.11.0",
     "history": "5.0.0",
     "js-file-download": "0.4.12",

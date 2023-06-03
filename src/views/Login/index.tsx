@@ -1,12 +1,13 @@
 // import Message from 'components/Message';
 import { makeStyles } from '@mui/styles';
-import { useState } from 'react';
-import Carousel from './Carousel';
-import ForgetPassForm from './ForgetPassForm';
-import LoginForm from './LoginForm';
-import RegisterForm from './RegisterForm';
+import React, { useState } from 'react';
 import logo from '../../assets/images/amc-main-logo.png';
-import Footer from './Footer';
+
+const Carousel = React.lazy(() => import('./Carousel'));
+const ForgetPassForm = React.lazy(() => import('./ForgetPassForm'));
+const LoginForm = React.lazy(() => import('./LoginForm'));
+const RegisterForm = React.lazy(() => import('./RegisterForm'));
+const Footer = React.lazy(() => import('./Footer'));
 
 const useStyles = makeStyles(() => ({
   loginContainer: {

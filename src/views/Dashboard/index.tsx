@@ -1,14 +1,16 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { makeStyles } from '@mui/styles';
-import QuickAcessWidgets from './QuickAccessWidgets';
 import statemenetIcon from '../../assets/icons/navigation/statements.png';
 import etransactionIcon from '../../assets/icons/navigation/e-transaction.png';
 import conversionIcon from '../../assets/icons/conversion.png';
 import redemptionIcon from '../../assets/icons/redemption.png';
-import PortfolioAnalysis from './PortfolioAnalysis';
-import ConsolidatedPortfolio from './ConsolidatedPortfolio';
-import BottomRightWidget from './BottomRightWidget';
-import BottomLeftWidget from './BottomLeftWidget';
+
+const QuickAcessWidgets = React.lazy(() => import('./QuickAccessWidgets'));
+const PortfolioAnalysis = React.lazy(() => import('./PortfolioAnalysis'));
+const ConsolidatedPortfolio = React.lazy(() => import('./ConsolidatedPortfolio'));
+const BottomRightWidget = React.lazy(() => import('./BottomRightWidget'));
+const BottomLeftWidget = React.lazy(() => import('./BottomLeftWidget'));
+
 
 const useStyles = makeStyles(() => ({
   widgetContainer: {

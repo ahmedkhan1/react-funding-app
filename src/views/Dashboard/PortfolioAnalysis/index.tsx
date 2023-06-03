@@ -2,11 +2,12 @@ import {
   Chart as ChartJS, ArcElement, Tooltip, Legend,
 } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
-import Cards from 'components/Widgets/DashboardCards';
 import Utils from 'utils';
-import PrimaryLoader from 'components/PrimaryLoader';
 import { makeStyles } from '@mui/styles';
-import { useState } from 'react';
+import React, { useState } from 'react';
+
+const Cards = React.lazy(() => import('components/Widgets/DashboardCards'));
+const PrimaryLoader = React.lazy(() => import('components/PrimaryLoader'));
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 

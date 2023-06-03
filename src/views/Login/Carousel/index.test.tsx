@@ -1,6 +1,8 @@
+import React from 'react';
 import { shallow } from 'enzyme';
-import Carousel from './index';
 import 'setupTest';
+
+const Carousel = React.lazy(() => import('./index'));
 
 const content = 'Availalbe on the App store';
 

@@ -1,10 +1,11 @@
 import Grid from '@mui/material/Grid';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Button } from '@mui/material';
-import FormSelectField from 'components/FormSelectField';
-import DatePickerField from 'components/DatePickerField';
 import Utils from 'utils';
+
+const FormSelectField = React.lazy(() => import('components/FormSelectField'));
+const DatePickerField = React.lazy(() => import('components/DatePickerField'));
 
 interface State {
     from: any;

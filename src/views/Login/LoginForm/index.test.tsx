@@ -1,8 +1,10 @@
+import React from 'react';
 import { mount, shallow } from 'enzyme';
-import LoginForm from './index';
 import 'setupTest';
 import { BrowserRouter } from 'react-router-dom';
 import { act } from 'react-dom/test-utils';
+
+const LoginForm = React.lazy(() => import('./index'));
 
 describe('LoginForm Component:', () => {
   function Component() {

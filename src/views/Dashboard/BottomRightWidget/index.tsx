@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@mui/styles';
-import Cards from 'components/Widgets/DashboardCards';
-import PrimaryLoader from 'components/PrimaryLoader';
 import Utils from 'utils';
-import WidgetTable from '../WidgetTable';
+
+const Cards = React.lazy(() => import('components/Widgets/DashboardCards'));
+const PrimaryLoader = React.lazy(() => import('components/PrimaryLoader'));
+const WidgetTable = React.lazy(() => import('../WidgetTable'));
 
 const useStyles = makeStyles(() => ({
   transactionFilterContainer: {

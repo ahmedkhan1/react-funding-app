@@ -1,6 +1,8 @@
+import React from 'react';
 import { shallow } from 'enzyme';
-import AppStore from './index';
 import 'setupTest';
+
+const AppStore = React.lazy(() => import('./index'));
 
 const content = 'Availalbe on the App store';
 

@@ -1,7 +1,6 @@
 import Utils from 'utils';
 // import CONSTANTS from 'utils/constants';
 import { useNavigate } from 'react-router-dom';
-import Message from 'components/Message';
 import {
   Lock,
   Visibility,
@@ -14,8 +13,10 @@ import InputAdornment from '@mui/material/InputAdornment';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import Loader from 'components/Loader';
-import FormField from 'components/FormField';
+
+const Message = React.lazy(() => import('components/Message'));
+const Loader = React.lazy(() => import('components/Loader'));
+const FormField = React.lazy(() => import('components/FormField'));
 
 const { keysExist } = Utils.commonMethods;
 

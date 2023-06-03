@@ -1,14 +1,16 @@
+import React from 'react';
 import { Button, Grid } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import { useForm } from 'react-hook-form';
-import FormField from 'components/FormField';
-import FormSelectField from 'components/FormSelectField';
-import PrimaryLoader from 'components/PrimaryLoader';
 import useProfile from 'hooks/useProfile';
 import Utils from 'utils';
 import { useDispatch } from 'react-redux';
 import { updateProfile } from 'services/Profile.service';
 import { updateUserProfileFailure, updateUserProfileSuccess } from 'redux/actions/users';
+
+const FormField = React.lazy(() => import('components/FormField'));
+const FormSelectField = React.lazy(() => import('components/FormSelectField'));
+const PrimaryLoader = React.lazy(() => import('components/PrimaryLoader'));
 
 const useStyles = makeStyles(() => ({
   ProfileContainer: {

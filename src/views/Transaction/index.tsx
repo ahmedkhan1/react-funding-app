@@ -9,12 +9,13 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import TablePagination from '@mui/material/TablePagination';
 import { TAbsences } from 'types/TAbsences';
-import Loader from 'shared/Loader';
 import Utils from 'utils';
-import Cards from 'components/Widgets/DashboardCards';
-import AbsenteesListOption from './AbsenteesListOption';
 import useFetchAbsenteesList from '../../hooks/tableOptions';
-import EnhancedTableHead from './AbsenteesTableHeader';
+
+const Cards = React.lazy(() => import('components/Widgets/DashboardCards'));
+const AbsenteesListOption = React.lazy(() => import('./AbsenteesListOption'));
+const EnhancedTableHead = React.lazy(() => import('./AbsenteesTableHeader'));
+const Loader = React.lazy(() => import('shared/Loader'));
 
 export default function EnhancedTable() {
   /* Initialize Tables State &&  Varibles */

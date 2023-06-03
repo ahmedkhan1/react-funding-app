@@ -6,7 +6,8 @@ import TabPanel from 'components/TabPanel';
 import { makeStyles } from '@mui/styles';
 import { purgeUserProfileState } from 'redux/actions/users';
 import { useDispatch } from 'react-redux';
-import InformationTab from './InformationTab';
+
+const InformationTab = React.lazy(() => import('./InformationTab'));
 
 function a11yProps(index: number) {
   return {

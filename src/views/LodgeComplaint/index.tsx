@@ -1,14 +1,15 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@mui/styles';
-import Cards from 'components/Widgets/DashboardCards';
 import Grid from '@mui/material/Grid';
-import FormSelectField from 'components/FormSelectField';
 import { Button } from '@mui/material';
 import { useForm } from 'react-hook-form';
-import FormTextAreaField from 'components/FormTextAreaField';
 import Utils from 'utils';
 import { useSelector } from 'react-redux';
 import { RootState } from 'redux/reducers/rootReducer';
+
+const FormSelectField = React.lazy(() => import('components/FormSelectField'));
+const Cards = React.lazy(() => import('components/Widgets/DashboardCards'));
+const FormTextAreaField = React.lazy(() => import('components/FormTextAreaField'));
 
 const useStyles = makeStyles(() => ({
   lodgeComplaintContainer: {

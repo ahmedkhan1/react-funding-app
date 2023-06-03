@@ -1,5 +1,4 @@
 import Utils from 'utils';
-import Message from 'components/Message';
 import {
   EmailRounded,
 } from '@mui/icons-material';
@@ -9,7 +8,9 @@ import InputAdornment from '@mui/material/InputAdornment';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import Loader from 'components/Loader';
+
+const Message = React.lazy(() => import('components/Message'));
+const Loader = React.lazy(() => import('components/Loader'));
 
 const { keysExist } = Utils.commonMethods;
 

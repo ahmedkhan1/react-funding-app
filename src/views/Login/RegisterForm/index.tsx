@@ -1,5 +1,4 @@
 import Utils from 'utils';
-import Message from 'components/Message';
 import {
   EmailRounded,
   Lock,
@@ -16,6 +15,7 @@ import OutlinedInput from '@mui/material/OutlinedInput';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
+const Message = React.lazy(() => import('components/Message'));
 const { keysExist } = Utils.commonMethods;
 
 interface State {

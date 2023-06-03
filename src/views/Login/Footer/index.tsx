@@ -1,5 +1,7 @@
+import React from 'react';
 import norton from '../../../assets/images/norton-logo.png';
-import AppStore from '../AppStore';
+
+const AppStore = React.lazy(() => import('../AppStore'));
 /* eslint-disable */
 
 function Footer(

@@ -1,7 +1,8 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { makeStyles } from '@mui/styles';
-import Cards from 'components/Widgets/DashboardCards';
-import StatementForm from './Form';
+
+const StatementForm = React.lazy(() => import('./Form'));
+const Cards = React.lazy(() => import('components/Widgets/DashboardCards'));
 
 const useStyles = makeStyles(() => ({
   statementContainer: {

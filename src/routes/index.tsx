@@ -1,17 +1,18 @@
 import React from 'react';
-import LoginView from 'views/Login';
-import AbsenteesList from 'components/Absentees/AbsenteesList';
-import Porfolio from 'views/Portfolio';
-import Transaction from 'views/Transaction';
-import Profile from 'views/Profile';
-import Statement from 'views/Statement';
-import LodgeComplaint from 'views/LodgeComplaint';
 import { purgeUserProfileState } from 'redux/actions/users';
 import store from '../redux/configureStore';
 
+const LoginView = React.lazy(() => import('views/Login'));
+const AbsenteesList = React.lazy(() => import('components/Absentees/AbsenteesList'));
+const Porfolio = React.lazy(() => import('views/Portfolio'));
+const Transaction = React.lazy(() => import('views/Transaction'));
+const Profile = React.lazy(() => import('views/Profile'));
+const Statement = React.lazy(() => import('views/Statement'));
+const LodgeComplaint = React.lazy(() => import('views/LodgeComplaint'));
 const DashboardLayout = React.lazy(() => import('components/DashboardLayout'));
 const NotFound = React.lazy(() => import('views/NotFound'));
 const Dashboard = React.lazy(() => import('views/Dashboard'));
+
 const onLeave = (action:any) => {
   store().dispatch(action());
 };

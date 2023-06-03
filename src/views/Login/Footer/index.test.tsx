@@ -1,6 +1,8 @@
+import React from 'react';
 import { mount, shallow } from 'enzyme';
-import Footer from './index';
 import 'setupTest';
+
+const Footer = React.lazy(() => import('./index'));
 
 describe('Footer Component:', () => {
   function Component(props:number) {
